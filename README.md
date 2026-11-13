@@ -21,6 +21,9 @@ UE5小工具，扫描动画资产，检查命名和帧率，输出 CSV 报告。
 ## 样例输出结果
 扫描 43 个资产，发现 18 个问题（14 个帧率、4 个命名）。
 
+## 空白项目测试结果
+0个资产，无报错
+
 ## 限制
 - 只扫 /Game 目录（写死在顶部常量，可改）,修改脚本顶部三个常量：ASSET_ROOT（扫描范围）、EXPECTED_FPS（目标帧率）、ALLOWED_PREFIXES（命名白名单）。
 - 只检查 AnimSequence，不检查 Montage / BlendSpace
