@@ -1,1 +1,31 @@
 # ue-anim-checker
+
+UE5小工具，扫描动画资产，检查命名和帧率，输出 CSV 报告。
+
+## 目的
+减少逐个点开动画检查命名和帧率的工作量。
+
+## 使用
+1. 启用 Python Editor Script Plugin
+2. 把 check_anims.py 放到任意目录
+3. 输出日志切到 Python 模式，输入 py "路径/check_anims.py"
+4. 报告生成在脚本同目录的 report.csv
+
+## 检查规则
+- 命名前缀白名单：MM_ / Quinn_ / MF_ / Manny_
+- 帧率必须为 30
+
+## 输出示例
+![报告截图](screenshot.png)
+
+## 样例输出结果
+扫描 43 个资产，发现 18 个问题（14 个帧率、4 个命名）。
+
+## 限制
+- 只扫 /Game 目录（写死在顶部常量，可改）,修改脚本顶部三个常量：ASSET_ROOT（扫描范围）、EXPECTED_FPS（目标帧率）、ALLOWED_PREFIXES（命名白名单）。
+- 只检查 AnimSequence，不检查 Montage / BlendSpace
+- 没有界面，只能在输出日志里跑
+- 每次都会重新加载全部资产
+
+## 环境
+UE 5.4.4 · 脚本内使用引擎自带 Python
