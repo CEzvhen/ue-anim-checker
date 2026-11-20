@@ -5,18 +5,42 @@ UE5小工具，扫描动画资产，检查命名和帧率，输出 CSV 报告。
 ## 目的
 减少逐个点开动画检查命名和帧率的工作量。
 
-## 使用
-1. 启用 Python Editor Script Plugin
-2. 把 check_anims.py 放到任意目录
-3. 输出日志切到 Python 模式，输入 py "路径/check_anims.py"
-4. 报告生成在脚本同目录的 report.csv
 
-## 检查规则
-- 命名前缀白名单：MM_ / Quinn_ / MF_ / Manny_
-- 帧率必须为 30
+## 使用
+
+### 前置条件
+- UE 5.4
+- 启用 `Python Editor Script Plugin`
+  （编辑 → 插件 → 搜 Python → 勾选 → 重启）
+
+### 方式一：编辑器面板（推荐）
+1. 把 `check_anims.py` 放到任意目录（建议 `项目/Content/Python/`）
+2. 把 `ue/EUW_AnimChecker.uasset` 导入项目 `Content/`
+3. 右键 `EUW_AnimChecker` → `运行编辑器实用工具`
+4. 点击「开始扫描」
+5. 结果出现在面板；同时生成 `report.csv`（在脚本同目录）
+
+### 方式二：命令行
+1. 打开 `窗口 → 输出日志`，输入框切到 `Python`
+2. 输入 `py "路径/check_anims.py"`
+3. 汇总打印在日志，`report.csv` 生成在脚本同目录
+
+### 输出说明
+| 输出 | 内容 |
+|---|---|
+| 面板 | 资产总数、问题数、按类型统计 |
+| `report.csv` | 每个资产一行：名称 / 路径 / 时长 / 帧率 / 问题 |
+
+### 修改检查规则
+编辑 `check_anims.py` 顶部三个常量：
+- `ASSET_ROOT`：扫描根目录（默认 `/Game`）
+- `EXPECTED_FPS`：目标帧率（默认 30）
+- `ALLOWED_PREFIXES`：命名白名单
 
 ## 输出示例
-![报告截图](screenshot.png)
+![UI输出截图](panel_result.png)  
+![EUW事件图表截图](panel_graph.png)  
+![报告截图](report_csv.png)
 
 ## 样例输出结果
 扫描 43 个资产，发现 18 个问题（14 个帧率、4 个命名）。
