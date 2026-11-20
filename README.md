@@ -39,7 +39,6 @@ UE5小工具，扫描动画资产，检查命名和帧率，输出 CSV 报告。
 
 ## 输出示例
 ![UI输出截图](panel_result.png)  
-![EUW事件图表截图](panel_graph.png)  
 ![报告截图](report_csv.png)
 
 ## 样例输出结果
